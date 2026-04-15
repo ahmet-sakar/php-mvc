@@ -1,7 +1,7 @@
-## Example
+# Example
 
-# Sample
-```
+## Sample
+```php
 <?php
     use \MVC\Core\{Router, View};
     $router = new Router();
@@ -14,8 +14,8 @@
 ?>
 ```
 
-# Prefix Use
-```
+## Prefix Use
+```php
 <?php
     $router->prefix('/', function($r) {
         $r->get('/?', function() {
@@ -41,8 +41,8 @@
 ?>
 ```
 
-# Route Parameter Use
-```
+## Route Parameter Use
+```php
 <?php
     $r->get('/users/:id', function($id) {
         echo "ID: $id";
