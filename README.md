@@ -2,54 +2,48 @@
 
 ## Sample
 ```php
-<?php
-    use \MVC\Core\{Router, View};
-    $router = new Router();
-    
-    $router->get('/', function() {
-        echo View::show('/index.php');
-    });
+use \MVC\Core\{Router, View};
+$router = new Router();
 
-    $router->dispatch();
-?>
+$router->get('/', function() {
+    echo View::show('/index.php');
+});
+
+$router->dispatch();
 ```
 
 ## Prefix Use
 ```php
-<?php
-    $router->prefix('/', function($r) {
+$router->prefix('/', function($r) {
+    $r->get('/?', function() {
+        echo 'Home Page';
+    });
+    
+    $r->prefix('/foo', function($r) {
         $r->get('/?', function() {
-            echo 'Home Page';
+            echo 'Foo';
         });
-        
-        $r->prefix('/foo', function($r) {
+
+        $r->prefix('/bar', function($r) {
             $r->get('/?', function() {
-                echo 'Foo';
+                echo 'Foo Bar';
             });
 
-            $r->prefix('/bar', function($r) {
-                $r->get('/?', function() {
-                    echo 'Foo Bar';
-                });
-
-                $r->get('/baz', function() {
-                    echo 'Foo Bar Baz';
-                });
+            $r->get('/baz', function() {
+                echo 'Foo Bar Baz';
             });
         });
     });
-?>
+});
 ```
 
 ## Route Parameter Use
 ```php
-<?php
-    $r->get('/users/:id', function($id) {
-        echo "ID: $id";
-    });
-    
-    $r->get('/users/:id/:id', function($id) {
-        echo "ID: $id[0]-$id[1]";
-    });
-?>
+$r->get('/users/:id', function($id) {
+    echo "ID: $id";
+});
+
+$r->get('/users/:id/:id', function($id) {
+    echo "ID: $id[0]-$id[1]";
+});
 ```
