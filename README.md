@@ -1,7 +1,7 @@
 ## Example
 
 # Sample
-`
+```
 <?php
     use \MVC\Core\{Router, View};
     $router = new Router();
@@ -12,10 +12,10 @@
 
     $router->dispatch();
 ?>
-`
+```
 
 # Prefix Use
-`
+```
 <?php
     $router->prefix('/', function($r) {
         $r->get('/?', function() {
@@ -39,10 +39,10 @@
         });
     });
 ?>
-`
+```
 
 # Route Parameter Use
-`
+```
 <?php
     $r->get('/users/:id', function($id) {
         echo "ID: $id";
@@ -52,4 +52,4 @@
         echo "ID: $id[0]-$id[1]";
     });
 ?>
-`
+```
